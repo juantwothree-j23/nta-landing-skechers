@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Tan Amateur × Skechers — Propuesta de colaboración</title>
+<meta name="description" content="Cómo se vería una colaboración entre No Tan Amateur y Skechers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#062340;
+    --navy-deep:#031523;
+    --gray:#969BA5;
+    --gold:#A17908;
+    --white:#FFFFFF;
+    --light:#F3F2EF;
+    --hairline:rgba(150,155,165,.22);
+    --hairline-on-light:rgba(6,35,64,.12);
+    --gold-wash:rgba(161,121,8,.14);
+    --fs-eyebrow:.74rem;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--white);
+    font-family:'Source Serif 4',serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  .display{font-family:'Big Shoulders Display',sans-serif;font-weight:800;letter-spacing:.01em;line-height:.96;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:var(--fs-eyebrow);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:14px;height:14px;flex:none;
+  }
+  .eyebrow.on-light{color:var(--gold);}
+  section{position:relative;}
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- HERO BANNER ---------- */
+  .hero{padding:0;overflow:hidden;}
+  .hero-banner{
+    position:relative;background-size:cover;background-position:center;
+    padding:clamp(64px,9vw,108px) 0 clamp(56px,8vw,90px);
+  }
+  .hero-banner-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(6,35,64,.5) 0%, rgba(6,35,64,.84) 62%, var(--navy) 100%);
+  }
+  .hero-banner-content{position:relative;z-index:1;}
+  .lockup-big{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-bottom:8px;
+  }
+  .lockup-big svg{height:clamp(40px,7vw,64px);width:auto;}
+  .lockup-big .plus{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:700;font-size:clamp(26px,4vw,38px);color:var(--gray);
+  }
+  .doc-caption{
+    text-align:center;
+    margin-top:18px;margin-bottom:44px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+  .hero-body{padding-top:clamp(56px,8vw,90px);}
+  .hero h1{
+    font-size:clamp(2.3rem,5.6vw,4.3rem);
+    margin:0 0 28px;
+    max-width:18ch;
+    color:var(--white);
+  }
+  .hero .sub{
+    font-size:clamp(1.05rem,1.6vw,1.28rem);
+    color:var(--gray);
+    max-width:62ch;
+    line-height:1.6;
+    margin:0 0 56px;
+    font-weight:400;
+  }
+  .intro-grid{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:clamp(28px,5vw,56px);
+    align-items:start;
+    padding-top:48px;
+    border-top:1px solid var(--hairline);
+  }
+  .gonzalo-photo{
+    width:160px;height:160px;border-radius:50%;
+    overflow:hidden;border:1px solid var(--hairline);
+    background:var(--navy-deep);
+  }
+  .gonzalo-photo img{width:100%;height:100%;object-fit:cover;}
+  .gonzalo-name{
+    margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--white);
+    line-height:1.5;
+  }
+  .gonzalo-name span{display:block;color:var(--gray);font-size:.74rem;margin-top:2px;}
+  .intro-copy p{
+    font-size:1.05rem;line-height:1.75;color:#D9DCE2;margin:0 0 18px;
+  }
+  .intro-copy p:last-child{margin-bottom:0;}
+  .intro-copy strong{color:var(--white);font-weight:600;}
+
+  .reel-intro{
+    margin-top:40px;padding:28px clamp(20px,4vw,32px);
+    background:var(--navy-deep);border-left:2px solid var(--gold);border-radius:2px;
+  }
+  .reel-quote{
+    font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;
+    font-size:1.08rem;line-height:1.55;color:var(--white);margin:0 0 12px;
+  }
+  .reel-note{font-size:.92rem;line-height:1.5;color:var(--gray);margin:0;}
+  .video-block{margin-top:40px;}
+  .video-frame{
+    position:relative;width:100%;aspect-ratio:16/9;
+    border-radius:4px;overflow:hidden;
+    border:1px solid var(--hairline);
+    background:var(--navy-deep);
+  }
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video-cap{
+    margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:.76rem;
+    color:var(--gray);letter-spacing:.04em;
+  }
+
+  /* ---------- DATA SECTION (light) ---------- */
+  .data-section{
+    background:var(--light);
+    color:var(--navy);
+    padding:clamp(64px,9vw,108px) 0;
+  }
+  .data-section .eyebrow{color:var(--gold);}
+  .data-section h2{
+    font-size:clamp(1.9rem,4vw,3rem);
+    max-width:22ch;
+    margin:0 0 56px;
+    color:var(--navy);
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    line-height:1.02;
+  }
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border-top:1px solid var(--hairline-on-light);
+    border-left:1px solid var(--hairline-on-light);
+    margin-bottom:60px;
+  }
+  .stat{
+    border-right:1px solid var(--hairline-on-light);
+    border-bottom:1px solid var(--hairline-on-light);
+    padding:30px 26px;
+  }
+  .stat .num{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    font-size:clamp(2.1rem,4.4vw,3.1rem);
+    color:var(--navy);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .stat .num em{color:var(--gold);font-style:normal;}
+  .stat .label{
+    font-size:.96rem;line-height:1.45;color:var(--navy);margin-bottom:10px;
+  }
+  .stat .src{
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+    letter-spacing:.04em;color:var(--gray);text-transform:uppercase;
+  }
+  .read-blocks{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,40px);
+    padding-top:48px;border-top:1px solid var(--hairline-on-light);
+  }
+  .read-block .rb-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;
+  }
+  .read-block p{font-size:.97rem;line-height:1.65;color:#2A3A4A;margin:0;}
+  .data-foot{
+    margin-top:44px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;
+    color:var(--gray);letter-spacing:.02em;
+  }
+  .data-intro{
+    font-size:1.05rem;line-height:1.65;color:#2A3A4A;max-width:62ch;
+    margin:0 0 40px;
+  }
+  .stat-grid-4{grid-template-columns:repeat(2,1fr);}
+
+  /* ---------- COLLAB SECTION: La Alianza (timeline simbiótico) ---------- */
+  .collab{padding:clamp(64px,9vw,108px) 0;}
+  .collab h2{
+    font-size:clamp(1.9rem,4vw,3rem);
+    max-width:24ch;color:var(--white);margin:0 0 18px;
+  }
+  .collab .sub{color:var(--gray);max-width:56ch;font-size:1.05rem;line-height:1.65;margin:0 0 56px;}
+
+  .alliance-track{position:relative;max-width:760px;margin:0 auto;padding-left:0;}
+  .alliance-track::before{
+    content:'';position:absolute;left:50%;top:6px;bottom:36px;width:0;
+    border-left:1px dashed rgba(161,121,8,.55);z-index:0;
+    transform:translateX(-50%);
+  }
+  .alliance-item{
+    position:relative;z-index:1;display:flex;align-items:flex-start;gap:20px;
+    width:calc(50% - 26px);margin-bottom:44px;
+  }
+  .alliance-item[style*="--n:1"],
+  .alliance-item[style*="--n:3"]{margin-right:auto;margin-left:0;flex-direction:row-reverse;text-align:right;}
+  .alliance-item[style*="--n:2"],
+  .alliance-item[style*="--n:4"]{margin-left:auto;margin-right:0;text-align:left;}
+  .alliance-node{
+    flex:none;width:36px;height:36px;border-radius:50%;
+    background:var(--navy-deep);border:1px solid var(--gold);color:var(--gold);
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .alliance-item[style*="--n:1"] .alliance-node,
+  .alliance-item[style*="--n:3"] .alliance-node{order:2;transform:translateX(18px);}
+  .alliance-item[style*="--n:2"] .alliance-node,
+  .alliance-item[style*="--n:4"] .alliance-node{transform:translateX(-18px);}
+  .alliance-card{
+    flex:1;background:var(--navy);border:1px solid var(--hairline);
+    padding:clamp(20px,3vw,26px);border-radius:2px;
+    transition:background .25s ease;
+  }
+  .alliance-card:hover{background:var(--navy-deep);}
+  .alliance-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .alliance-card h3{
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;
+    font-size:1.32rem;color:var(--white);margin:0 0 10px;line-height:1.15;
+  }
+  .alliance-card p{font-size:.93rem;line-height:1.6;color:var(--gray);margin:0;}
+  .alliance-loop{
+    position:relative;z-index:1;text-align:center;margin-top:-12px;
+    font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.06em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  .alliance-loop span{display:inline-block;margin-right:6px;font-size:1rem;}
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:var(--navy-deep);
+    padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,72px);
+    text-align:left;
+  }
+  .closing h2{
+    font-family:'Big Shoulders Display',sans-serif;font-weight:800;
+    font-size:clamp(2rem,4.4vw,3.3rem);max-width:20ch;color:var(--white);
+    margin:0 0 32px;line-height:1.04;
+  }
+  .closing .sub{color:var(--gray);max-width:50ch;font-size:1.05rem;line-height:1.65;margin:0 0 40px;}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--gold);color:var(--navy-deep);
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.92rem;
+    letter-spacing:.04em;text-decoration:none;
+    padding:17px 28px;border-radius:2px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:0 0 0 0 rgba(161,121,8,.0);
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.28);}
+  .cta-btn svg{width:18px;height:18px;flex:none;}
+  footer{
+    margin-top:80px;padding-top:28px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  }
+  footer svg{height:22px;width:auto;}
+  footer .fine{
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--gray);letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:760px){
+    .intro-grid{grid-template-columns:1fr;}
+    .gonzalo-photo{width:120px;height:120px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .read-blocks{grid-template-columns:1fr;gap:32px;}
+    .alliance-track::before{left:17px;}
+    .alliance-item,
+    .alliance-item[style*="--n:1"],
+    .alliance-item[style*="--n:2"],
+    .alliance-item[style*="--n:3"],
+    .alliance-item[style*="--n:4"]{
+      width:100%;margin-left:0;margin-right:0;
+      flex-direction:row;text-align:left;
+    }
+    .alliance-item[style*="--n:1"] .alliance-node,
+    .alliance-item[style*="--n:2"] .alliance-node,
+    .alliance-item[style*="--n:3"] .alliance-node,
+    .alliance-item[style*="--n:4"] .alliance-node{
+      order:0;transform:none;width:32px;height:32px;font-size:.72rem;
+    }
+    footer{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="punto-de-partida">
+    <div class="hero-banner" style="background-image:url('hero.jpg')">
+      <div class="hero-banner-overlay"></div>
+      <div class="wrap hero-banner-content">
+        <div class="lockup-big reveal">
+          <img src="nta-logo.svg" alt="No Tan Amateur" style="height:clamp(40px,7vw,64px);width:auto;">
+          <span class="plus">×</span>
+          <img src="skechers-logo.svg" alt="Skechers" style="height:clamp(40px,7vw,64px);width:auto;">
+        </div>
+        <p class="doc-caption reveal">Propuesta de colaboración &mdash; junio 2026</p>
+      <div class="eyebrow reveal">
+        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+        Punto de partida
+      </div>
+      <h1 class="display reveal">No tan amateur es el primer podcast que le habla a la comunidad de alto rendimiento deportivo y corporativo.</h1>
+      <p class="sub reveal">Skechers se suma para amplificar el mensaje y posicionarse en el running.</p>
+      </div>
+    </div>
+    <div class="wrap hero-body">
+      <div class="intro-grid reveal">
+        <div>
+          <div class="gonzalo-photo"><img src="gonzalo.jpg" alt="Gonzalo Brenner, CEO y host de No Tan Amateur" loading="lazy"></div>
+          <p class="gonzalo-name">Gonzalo Brenner<span>CEO y host de NTA</span></p>
+        </div>
+        <div class="intro-copy">
+          <p>Hoy NTA es un podcast: conversaciones entre líderes que corren y andan en bicicleta compitiendo en serio, con la misma exigencia que le ponen a su cargo. Tiempos, objetivos, mentalidad de excelencia — la misma vara, aplicada dos veces.</p>
+          <p>Correr y andar en bicicleta se entrenan solos. Detrás de cada episodio se está construyendo el espacio donde esa exigencia individual se vuelve colectiva — eventos propios, una membresía dedicada, gente que entiende exactamente lo que cuesta. <strong>El podcast es la puerta de entrada. La comunidad es el ecosistema.</strong></p>
+        </div>
+      </div>
+
+      <div class="reel-intro reveal">
+        <p class="reel-quote">&ldquo;Tu preocúpate de alcanzar tu próximo objetivo. Skechers se preocupa de que sea cómodo y seguro.&rdquo;</p>
+        <p class="reel-note">Ya grabamos los primeros 4 capítulos &mdash; con Jaime Soler, Cecilia Valdés, Sebastián Keitel y Nicolás Goldstein.</p>
+      </div>
+
+      <div class="video-block reveal">
+        <div class="eyebrow"><svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>El reel</div>
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/Z8rN0MI8FKI?rel=0&modestbranding=1" title="No Tan Amateur — reel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-cap">Así se ve y se siente NTA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DATA ===================== -->
+  <section class="data-section" id="el-terreno">
+    <div class="wrap">
+      <div class="eyebrow on-light reveal">
+        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+        El terreno
+      </div>
+      <h2 class="reveal">Le estamos hablando a una comunidad de runners y ciclistas que ya existe y sigue creciendo.</h2>
+      <p class="data-intro reveal">La ciencia confirma lo que esta comunidad ya sabe: la disciplina deportiva y el desempeño ejecutivo corren por el mismo cable. La misma exigencia, aplicada dos veces.</p>
+
+      <div class="stat-grid stat-grid-4 reveal">
+        <div class="stat">
+          <div class="num">6.8<em>k</em>→33<em>k</em></div>
+          <div class="label">corredores en la Maratón de Santiago</div>
+          <div class="src">2007 → 2026</div>
+        </div>
+        <div class="stat">
+          <div class="num">41<em>%</em></div>
+          <div class="label">de los corredores de trail son ejecutivos de nivel medio</div>
+          <div class="src">Encuesta Runchile / Trichile</div>
+        </div>
+        <div class="stat">
+          <div class="num">4&ndash;10<em>%</em></div>
+          <div class="label">más rentables son las empresas con CEOs que entrenan a diario</div>
+          <div class="src">Universidad de Colonia, S&amp;P 1500, 2001&ndash;2011</div>
+        </div>
+        <div class="stat">
+          <div class="num">68<em>%</em></div>
+          <div class="label">de los CEOs de Fortune 500 fueron deportistas de alto rendimiento</div>
+          <div class="src">Deloitte</div>
+        </div>
+      </div>
+
+      <p class="data-foot">Fuentes: Maratón de Santiago, Encuesta Runchile / Trichile, Universidad de Colonia (S&amp;P 1500), Deloitte. Detalle completo disponible a pedido.</p>
+    </div>
+  </section>
+
+  <!-- ===================== COLLAB ===================== -->
+  <section class="collab" id="la-alianza">
+    <div class="wrap">
+      <div class="eyebrow reveal">
+        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+        La Alianza
+      </div>
+      <h2 class="display reveal">Cuatro formas de estar en NTA &mdash; conectadas entre s&iacute;, no cuatro casillas sueltas.</h2>
+      <p class="sub reveal">Pensadas para que la presencia de Skechers se sienta parte de la conversación, no pegada encima de ella.</p>
+
+      <div class="alliance-track reveal">
+        <div class="alliance-item" style="--n:1">
+          <div class="alliance-node">01</div>
+          <div class="alliance-card">
+            <span class="tag">Programa</span>
+            <h3>Branded content en el episodio</h3>
+            <p>Presencia de marca dentro de las conversaciones del podcast, con mención explícita de auspicio &mdash; &ldquo;este episodio se los trae Skechers&rdquo;.</p>
+          </div>
+        </div>
+        <div class="alliance-item" style="--n:2">
+          <div class="alliance-node">02</div>
+          <div class="alliance-card">
+            <span class="tag">Comunidad</span>
+            <h3>Branded content en la comunidad</h3>
+            <p>Presencia donde vive hoy la conversación &mdash; WhatsApp y el Strava Club &mdash; sin depender de que esté dentro del episodio.</p>
+          </div>
+        </div>
+        <div class="alliance-item" style="--n:3">
+          <div class="alliance-node">03</div>
+          <div class="alliance-card">
+            <span class="tag">PR ejecutivo</span>
+            <h3>Un ejecutivo de Skechers como invitado</h3>
+            <p>Si alguien del equipo Skechers entrena en serio y compite, tiene un lugar natural como invitado del programa.</p>
+          </div>
+        </div>
+        <div class="alliance-item" style="--n:4">
+          <div class="alliance-node">04</div>
+          <div class="alliance-card">
+            <span class="tag">Charla corporativa</span>
+            <h3>Una charla sobre alto rendimiento</h3>
+            <p>Charla motivacional con foco en rendimiento deportivo y corporativo a cargo de Gonzalo Brenner, alineada al propósito de la empresa y sus objetivos.</p>
+          </div>
+        </div>
+        <div class="alliance-loop" aria-hidden="true">
+          <span>&#8635;</span> vuelve al programa
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CLOSING ===================== -->
+  <section class="closing" id="siguiente-tramo">
+    <div class="wrap">
+      <div class="eyebrow reveal">
+        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+        El siguiente tramo
+      </div>
+      <h2 class="reveal">Poco que perder. Mucho que ganar conversando.</h2>
+      <p class="sub reveal">No Tan Amateur, sin nosotros, no existe. Sin Skechers, no sería lo mismo.</p>
+      <a class="cta-btn reveal" href="https://wa.me/56900000000?text=Vi%20la%20landing%20de%20NTA%20para%20Skechers%20y%20quiero%20seguir%20la%20conversaci%C3%B3n." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.9-.4-1.9-1-2.7-1.8-.7-.7-1.2-1.5-1.6-2.2-.1-.2 0-.4.1-.5.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9 1-.9 2.3 0 1.4 1 2.7 1.1 2.9.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5 0 1.6-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2.2C6.6 2.2 2.2 6.6 2.2 12c0 1.9.5 3.6 1.5 5.1L2.2 21.8l4.8-1.5c1.4.8 3.1 1.3 4.9 1.3 5.4 0 9.8-4.4 9.8-9.8S17.4 2.2 12 2.2zm0 17.8c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.3 1 1-3.2-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+        Habla por WhatsApp con Gonzalo
+      </a>
+
+      <footer>
+        <img src="nta-logo.svg" alt="No Tan Amateur" style="height:clamp(40px,7vw,64px);width:auto;">
+        <p class="fine">No Tan Amateur · Santiago, Chile · Propuesta preparada para Skechers</p>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  },{threshold:.12});
+  els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
