@@ -54,19 +54,37 @@
   /* reveal animation */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
+  .alliance-card:nth-child(1){transition-delay:0s;}
+  .alliance-card:nth-child(2){transition-delay:.09s;}
+  .alliance-card:nth-child(3){transition-delay:.18s;}
+  .alliance-card:nth-child(4){transition-delay:.27s;}
+  .stat:nth-child(1){transition-delay:0s;}
+  .stat:nth-child(2){transition-delay:.08s;}
+  .stat:nth-child(3){transition-delay:.16s;}
+  .stat:nth-child(4){transition-delay:.24s;}
+  /* punto de movimiento ambiental en cada eyebrow */
+  @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .eyebrow .dot circle:last-child{animation:pulse-dot 2.4s ease-in-out infinite;}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none;}
     html{scroll-behavior:auto;}
+    .eyebrow .dot circle:last-child{animation:none;}
+    .parallax-bg{transform:none !important;}
   }
 
   /* ---------- HERO BANNER ---------- */
   .hero{padding:0;overflow:hidden;}
   .hero-banner{
-    position:relative;background-size:cover;background-position:center;
+    position:relative;overflow:hidden;
     padding:clamp(64px,9vw,108px) 0 clamp(56px,8vw,90px);
   }
+  .hero-banner-bg{
+    position:absolute;left:0;right:0;top:-14%;height:128%;
+    background-size:cover;background-position:center;
+    will-change:transform;z-index:0;
+  }
   .hero-banner-overlay{
-    position:absolute;inset:0;
+    position:absolute;inset:0;z-index:0;
     background:linear-gradient(180deg, rgba(6,35,64,.22) 0%, rgba(6,35,64,.58) 65%, var(--navy) 100%);
   }
   .hero-banner-content{position:relative;z-index:1;}
@@ -180,6 +198,14 @@
     padding:30px 26px;
     min-width:0;
     overflow-wrap:break-word;
+    position:relative;
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+  }
+  .stat:hover{
+    transform:translateY(-5px);
+    box-shadow:0 16px 28px rgba(6,35,64,.16);
+    background:var(--light);
+    z-index:2;
   }
   .stat .num{
     font-family:'Big Shoulders Display',sans-serif;
@@ -221,12 +247,16 @@
 
   /* ---------- COLLAB SECTION: La Alianza (fondo imagen + grilla) ---------- */
   .collab{
-    position:relative;
-    background:url('alliance-bg.jpg') center/cover no-repeat;
+    position:relative;overflow:hidden;
     padding:clamp(72px,10vw,120px) 0 clamp(64px,9vw,108px);
   }
-  .collab::before{
-    content:'';position:absolute;inset:0;
+  .collab-bg{
+    position:absolute;left:0;right:0;top:-14%;height:128%;
+    background:url('alliance-bg.jpg') center/cover no-repeat;
+    will-change:transform;z-index:0;
+  }
+  .collab-overlay{
+    position:absolute;inset:0;z-index:0;
     background:rgba(0,0,0,.45);
   }
   .collab .wrap{position:relative;z-index:1;}
@@ -243,9 +273,13 @@
     background:rgba(3,21,35,.62);border:1px solid rgba(255,255,255,.14);
     padding:clamp(22px,3vw,30px);border-radius:3px;
     backdrop-filter:blur(6px);
-    transition:background .25s ease;
+    transition:background .25s ease, transform .3s ease, box-shadow .3s ease;
   }
-  .alliance-card:hover{background:rgba(3,21,35,.78);}
+  .alliance-card:hover{
+    background:rgba(3,21,35,.78);
+    transform:translateY(-7px);
+    box-shadow:0 18px 34px rgba(0,0,0,.4);
+  }
   .alliance-card .tag{
     font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;
@@ -322,7 +356,8 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="punto-de-partida">
-    <div class="hero-banner" style="background-image:url('hero.jpg')">
+    <div class="hero-banner">
+      <div class="hero-banner-bg parallax-bg" data-parallax="0.28" style="background-image:url('hero.jpg')"></div>
       <div class="hero-banner-overlay"></div>
       <div class="wrap hero-banner-content">
         <div class="lockup-big reveal">
@@ -353,8 +388,8 @@
 
       <div class="video-block reveal">
         <div class="eyebrow"><svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>El reel</div>
-        <div class="video-frame">
-          <iframe src="https://www.youtube-nocookie.com/embed/Z8rN0MI8FKI?rel=0&modestbranding=1" title="No Tan Amateur — reel" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-frame" id="reel-frame">
+          <iframe data-src="https://www.youtube-nocookie.com/embed/Z8rN0MI8FKI?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1" title="No Tan Amateur — reel" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -370,23 +405,23 @@
       <h2 class="reveal">Le hablamos a una comunidad de personas que no viven del deporte pero que ordenan su vida en torno a él.</h2>
       <p class="data-intro reveal">El deporte de alto rendimiento en Chile pas&oacute; de ser un nicho a una cultura: los eventos crecen, aparecen nuevas comunidades y cada vez m&aacute;s ejecutivos integran el deporte a su identidad. Seremos la voz de un grupo cada vez m&aacute;s grande.</p>
 
-      <div class="stat-grid stat-grid-4 reveal">
-        <div class="stat">
+      <div class="stat-grid stat-grid-4">
+        <div class="stat reveal">
           <div class="num">6.8<em>k</em>→33<em>k</em></div>
           <div class="label">corredores en la Maratón de Santiago</div>
           <div class="src">2007 → 2026</div>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <div class="num">41<em>%</em></div>
           <div class="label">de los corredores de trail son ejecutivos de nivel medio</div>
           <div class="src">Encuesta Runchile / Trichile</div>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <div class="num">4&ndash;10<em>%</em></div>
           <div class="label">más rentables son las empresas con CEOs que entrenan a diario</div>
           <div class="src">Universidad de Colonia, S&amp;P 1500, 2001&ndash;2011</div>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <div class="num">68<em>%</em></div>
           <div class="label">de los CEOs de Fortune 500 fueron deportistas de alto rendimiento</div>
           <div class="src">Deloitte</div>
@@ -400,6 +435,8 @@
 
   <!-- ===================== COLLAB ===================== -->
   <section class="collab" id="la-alianza">
+    <div class="collab-bg parallax-bg" data-parallax="0.22"></div>
+    <div class="collab-overlay"></div>
     <div class="wrap">
       <div class="eyebrow reveal">
         <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
@@ -408,23 +445,23 @@
       <h2 class="display reveal">4 oportunidades para Skechers.</h2>
       <p class="sub reveal">Queremos que Skechers sea parte de la conversaci&oacute;n. No son casillas sueltas. Son 4 alternativas conectadas.</p>
 
-      <div class="alliance-grid reveal">
-          <div class="alliance-card">
+      <div class="alliance-grid">
+          <div class="alliance-card reveal">
             <span class="tag">Programa</span>
             <h3>Branded content en el episodio</h3>
             <p>Presencia de marca dentro de las conversaciones del podcast, con mención explícita &mdash; &ldquo;este episodio se los trae Skechers&rdquo;.</p>
           </div>
-          <div class="alliance-card">
+          <div class="alliance-card reveal">
             <span class="tag">Comunidad</span>
             <h3>Branded content en la comunidad</h3>
             <p>Presencia donde vive hoy la conversación &mdash; WhatsApp y el Strava Club &mdash; sin depender del episodio.</p>
           </div>
-          <div class="alliance-card">
+          <div class="alliance-card reveal">
             <span class="tag">PR ejecutivo</span>
             <h3>Un ejecutivo de Skechers como invitado</h3>
             <p>Si alguien del equipo entrena en serio y compite, tiene un lugar natural como invitado del programa.</p>
           </div>
-          <div class="alliance-card">
+          <div class="alliance-card reveal">
             <span class="tag">Producción in-situ</span>
             <h3>Un capítulo grabado en tus oficinas</h3>
             <p>Grabamos un capítulo del podcast en tus oficinas o un lugar de tu elección, donde tus colaboradores tengan una experiencia privada con el invitado seleccionado.</p>
@@ -466,6 +503,45 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
   },{threshold:.12});
   els.forEach(el=>obs.observe(el));
+
+  // Parallax en los fondos de hero y La Alianza
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const parallaxEls = document.querySelectorAll('.parallax-bg');
+  let ticking = false;
+  function updateParallax(){
+    parallaxEls.forEach(el=>{
+      const section = el.closest('section') || el.parentElement;
+      const rect = section.getBoundingClientRect();
+      const speed = parseFloat(el.dataset.parallax || '0.25');
+      const offset = rect.top * speed;
+      el.style.transform = 'translate3d(0,' + offset + 'px,0)';
+    });
+    ticking = false;
+  }
+  if(!reduceMotion && parallaxEls.length){
+    updateParallax();
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){ requestAnimationFrame(updateParallax); ticking = true; }
+    }, {passive:true});
+    window.addEventListener('resize', updateParallax);
+  }
+
+  // Autoplay (muted) del reel cuando entra en pantalla
+  const reelFrame = document.querySelector('#reel-frame iframe');
+  const reelWrap = document.getElementById('reel-frame');
+  if(reelFrame && reelWrap){
+    const reelObs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          if(!reelFrame.getAttribute('src')){
+            reelFrame.setAttribute('src', reelFrame.dataset.src);
+          }
+          reelObs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.4});
+    reelObs.observe(reelWrap);
+  }
 </script>
 
 </body>
