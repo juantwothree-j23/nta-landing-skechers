@@ -70,14 +70,28 @@
     background:linear-gradient(180deg, rgba(6,35,64,.5) 0%, rgba(6,35,64,.84) 62%, var(--navy) 100%);
   }
   .hero-banner-content{position:relative;z-index:1;}
-  .lockup-big{
+  .doc-caption-desktop{display:none;}
+  .hero-top-grid{display:block;}
+  .hero-top-logos{
     display:flex;align-items:center;justify-content:center;
-    gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-bottom:8px;
+    gap:clamp(16px,3vw,28px);flex-wrap:wrap;margin-bottom:8px;
   }
-  .lockup-big svg{height:clamp(40px,7vw,64px);width:auto;}
-  .lockup-big .plus{
+  .lockup-logo{height:clamp(40px,7vw,64px);width:auto;}
+  .hero-top-logos .plus{
     font-family:'Big Shoulders Display',sans-serif;
     font-weight:700;font-size:clamp(26px,4vw,38px);color:var(--gray);
+  }
+  @media (min-width:900px){
+    .doc-caption-mobile{display:none;}
+    .doc-caption-desktop{display:block;text-align:center;margin-top:20px;margin-bottom:0;}
+    .hero-top-grid{
+      display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(32px,5vw,64px);
+      align-items:center;
+    }
+    .hero-top-text .sub{margin-bottom:0;}
+    .hero-top-logos{flex-direction:column;justify-content:center;}
+    .hero-top-logos .plus{margin:4px 0;}
+    .lockup-logo{height:clamp(56px,8vw,84px);}
   }
   .doc-caption{
     text-align:center;
@@ -90,9 +104,9 @@
   }
   .hero-body{padding-top:clamp(56px,8vw,90px);}
   .hero h1{
-    font-size:clamp(2.3rem,5.6vw,4.3rem);
+    font-size:clamp(2.1rem,4.6vw,3.6rem);
     margin:0 0 28px;
-    max-width:18ch;
+    max-width:26ch;
     color:var(--white);
   }
   .hero .sub{
@@ -115,6 +129,7 @@
     width:160px;height:160px;border-radius:50%;
     overflow:hidden;border:1px solid var(--hairline);
     background:var(--navy-deep);
+    margin:0 auto;
   }
   .gonzalo-photo img{width:100%;height:100%;object-fit:cover;}
   .gonzalo-name{
@@ -123,6 +138,7 @@
     font-size:.78rem;
     color:var(--white);
     line-height:1.5;
+    text-align:center;
   }
   .gonzalo-name span{display:block;color:var(--gray);font-size:.74rem;margin-top:2px;}
   .intro-copy p{
@@ -221,6 +237,14 @@
   }
   .stat-grid-4{grid-template-columns:repeat(2,1fr);}
 
+  /* ---------- WHY NOW ---------- */
+  .why-now{background:var(--navy-deep);padding:clamp(56px,8vw,96px) 0;}
+  .why-now h2{
+    font-size:clamp(1.7rem,3.6vw,2.6rem);
+    max-width:22ch;color:var(--white);margin:0 0 18px;
+  }
+  .why-now .sub{color:var(--gray);max-width:62ch;font-size:1.04rem;line-height:1.68;margin:0;}
+
   /* ---------- COLLAB SECTION: La Alianza (fondo imagen + grilla) ---------- */
   .collab{
     position:relative;
@@ -229,7 +253,7 @@
   }
   .collab::before{
     content:'';position:absolute;inset:0;
-    background:rgba(0,0,0,.78);
+    background:rgba(0,0,0,.45);
   }
   .collab .wrap{position:relative;z-index:1;}
   .collab h2{
@@ -242,12 +266,12 @@
     margin-bottom:56px;
   }
   .alliance-card{
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    background:rgba(3,21,35,.62);border:1px solid rgba(255,255,255,.14);
     padding:clamp(22px,3vw,30px);border-radius:3px;
-    backdrop-filter:blur(4px);
+    backdrop-filter:blur(6px);
     transition:background .25s ease;
   }
-  .alliance-card:hover{background:rgba(255,255,255,.10);}
+  .alliance-card:hover{background:rgba(3,21,35,.78);}
   .alliance-card .tag{
     font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;
@@ -326,18 +350,23 @@
     <div class="hero-banner" style="background-image:url('hero.jpg')">
       <div class="hero-banner-overlay"></div>
       <div class="wrap hero-banner-content">
-        <div class="lockup-big reveal">
-          <img src="nta-logo.svg" alt="No Tan Amateur" style="height:clamp(40px,7vw,64px);width:auto;">
-          <span class="plus">×</span>
-          <img src="skechers-logo.svg" alt="Skechers" style="height:clamp(40px,7vw,64px);width:auto;">
+        <p class="doc-caption doc-caption-mobile reveal">Propuesta de colaboración &mdash; junio 2026</p>
+        <div class="hero-top-grid">
+          <div class="hero-top-text">
+            <div class="eyebrow reveal">
+              <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+              Punto de partida
+            </div>
+            <h1 class="display reveal">Está naciendo una nueva generación de líderes de alto rendimiento. Skechers puede ser el primero en liderarlo.</h1>
+            <p class="sub reveal">Más que un sponsor: un socio fundador de una nueva comunidad de alto rendimiento.</p>
+          </div>
+          <div class="hero-top-logos reveal">
+            <img src="nta-logo.svg" alt="No Tan Amateur" class="lockup-logo">
+            <span class="plus">×</span>
+            <img src="skechers-logo.svg" alt="Skechers" class="lockup-logo">
+            <p class="doc-caption doc-caption-desktop">Propuesta de colaboración &mdash; junio 2026</p>
+          </div>
         </div>
-        <p class="doc-caption reveal">Propuesta de colaboración &mdash; junio 2026</p>
-      <div class="eyebrow reveal">
-        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
-        Punto de partida
-      </div>
-      <h1 class="display reveal">&ldquo;No tan amateur&rdquo; es el primer podcast de la comunidad de alto rendimiento deportivo y corporativo.</h1>
-      <p class="sub reveal">Skechers se suma para amplificar el mensaje y posicionarse en el running.</p>
       </div>
     </div>
     <div class="wrap hero-body">
@@ -347,8 +376,11 @@
           <p class="gonzalo-name">Gonzalo Brenner<span>CEO y host de NTA</span></p>
         </div>
         <div class="intro-copy">
-          <p>Queremos crear un espacio que amplif&iacute;que conversaciones entre l&iacute;deres que corren y andan en bicicleta compitiendo con la misma exigencia que le ponen a su cargo. Tiempos, objetivos, mentalidad de excelencia son la misma vara que aplican al deporte y al trabajo.</p>
-          <p>Deportes y trabajos que se viven en solitario merecen tener una voz, una comunidad y un club.</p>
+          <p>Lo que hoy es un podcast, ma&ntilde;ana se convertir&aacute; en un nuevo concepto de alto rendimiento.</p>
+          <p>Es un espacio que amplifica conversaciones entre l&iacute;deres de alto rendimiento tanto laboral como deportivo, con el mismo deseo de equilibrar estos mundos con su vida personal y encontrar una comunidad que comparta su est&aacute;ndar.</p>
+          <p>Personas que entienden que la disciplina, la ambici&oacute;n y la b&uacute;squeda de la excelencia no solo existen en su jornada laboral.</p>
+          <p>Deportes y trabajos que se viven en solitario merecen tener una voz y una comunidad.</p>
+          <p><strong>Queremos que Skechers no solo sea un partner, sino que se convierta en una de las marcas fundadoras de este nuevo ecosistema.</strong></p>
           <p>Ya tenemos 4 cap&iacute;tulos grabados: Jaime Soler, Cecilia Vald&eacute;s, Sebasti&aacute;n Keitel y Nicol&aacute;s Goldstein.</p>
           <p class="reel-lead">A continuaci&oacute;n te dejamos un reel de estos primeros cap&iacute;tulos:</p>
         </div>
@@ -371,7 +403,7 @@
         La audiencia
       </div>
       <h2 class="reveal">Le hablamos a una comunidad de personas que no viven del deporte pero que ordenan su vida en torno a él.</h2>
-      <p class="data-intro reveal">La disciplina deportiva y el desempe&ntilde;o ejecutivo corren por el mismo cable. No venimos a crear una comunidad. Seremos la voz de un grupo cada vez m&aacute;s grande.</p>
+      <p class="data-intro reveal">La disciplina deportiva y el desempe&ntilde;o ejecutivo corren por el mismo cable. No venimos a crear una comunidad. Seremos la voz de un grupo cada vez m&aacute;s grande. El deporte de alto rendimiento en Chile pas&oacute; de ser un nicho a una cultura: los eventos crecen, aparecen nuevas comunidades y cada vez m&aacute;s ejecutivos integran el deporte a su identidad.</p>
 
       <div class="stat-grid stat-grid-4 reveal">
         <div class="stat">
@@ -400,6 +432,18 @@
     </div>
   </section>
 
+  <!-- ===================== POR QUÉ AHORA ===================== -->
+  <section class="why-now" id="por-que-ahora">
+    <div class="wrap">
+      <div class="eyebrow reveal">
+        <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
+        ¿Por qué ahora?
+      </div>
+      <h2 class="display reveal">Las categorías emergentes las definen las marcas que llegan primero.</h2>
+      <p class="sub reveal">El deporte de alto rendimiento vive uno de sus momentos de mayor crecimiento. El alto rendimiento dejó de ser una conversación exclusiva de los atletas. La intersección entre deporte y liderazgo sigue prácticamente vacía. Skechers tiene la oportunidad de hacerlo desde el comienzo.</p>
+    </div>
+  </section>
+
   <!-- ===================== COLLAB ===================== -->
   <section class="collab" id="la-alianza">
     <div class="wrap">
@@ -407,7 +451,7 @@
         <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
         La Alianza
       </div>
-      <h2 class="display reveal">Cuatro opciones de colaboraci&oacute;n.</h2>
+      <h2 class="display reveal">4 oportunidades para Skechers.</h2>
       <p class="sub reveal">Queremos que Skechers sea parte de la conversaci&oacute;n. No son casillas sueltas. Son 4 alternativas conectadas.</p>
 
       <div class="alliance-grid reveal">
@@ -427,13 +471,13 @@
             <p>Si alguien del equipo entrena en serio y compite, tiene un lugar natural como invitado del programa.</p>
           </div>
           <div class="alliance-card">
-            <span class="tag">Charla corporativa</span>
-            <h3>Una charla sobre alto rendimiento</h3>
-            <p>Charla motivacional con foco en rendimiento deportivo y corporativo a cargo de Gonzalo Brenner, alineada al propósito y objetivos de la empresa.</p>
+            <span class="tag">Producción in-situ</span>
+            <h3>Un capítulo grabado en tus oficinas</h3>
+            <p>Grabamos un capítulo del podcast en tus oficinas o un lugar de tu elección, donde tus colaboradores tengan una experiencia privada con el invitado seleccionado.</p>
           </div>
       </div>
       <div class="alliance-quote reveal">
-        <p>&ldquo;T&uacute; preoc&uacute;pate de alcanzar tu pr&oacute;ximo objetivo. Skechers se preocupa de que sea c&oacute;modo y seguro.&rdquo;</p>
+        <p>&ldquo;Enf&oacute;cate en tu objetivo. Skechers se preocupa de tus pies.&rdquo;</p>
         <span>Propuesta de mensaje para campa&ntilde;a</span>
       </div>
     </div>
@@ -446,10 +490,11 @@
         <svg class="dot" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#A17908" stroke-width="1.6"/><circle cx="7" cy="7" r="2" fill="#A17908"/></svg>
         El siguiente tramo
       </div>
-      <h2 class="reveal">Sin nosotros este programa no existe.<br>Sin Skechers no ser&iacute;a lo mismo.<br><span class="closing-cta-line">Sigamos conversando.</span></h2>
-      <a class="cta-btn reveal" href="https://wa.me/56962447542?text=Vi%20la%20landing%20de%20NTA%20para%20Skechers%20y%20quiero%20seguir%20la%20conversaci%C3%B3n." target="_blank" rel="noopener">
+      <h2 class="reveal">Las categorías no se lideran cuando ya existen. Se lideran cuando todavía se están formando.</h2>
+      <p class="sub reveal">Estamos construyendo una comunidad donde el rendimiento deportivo y el liderazgo profesional hablan el mismo idioma. Creemos que Skechers tiene la oportunidad de convertirse en la marca fundadora de este movimiento.</p>
+      <a class="cta-btn reveal" href="https://wa.me/56962447542?text=Vi%20la%20landing%20de%20NTA%20para%20Skechers%20y%20quiero%20explorar%20la%20alianza%20estrat%C3%A9gica." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.9-.4-1.9-1-2.7-1.8-.7-.7-1.2-1.5-1.6-2.2-.1-.2 0-.4.1-.5.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9 1-.9 2.3 0 1.4 1 2.7 1.1 2.9.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5 0 1.6-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2.2C6.6 2.2 2.2 6.6 2.2 12c0 1.9.5 3.6 1.5 5.1L2.2 21.8l4.8-1.5c1.4.8 3.1 1.3 4.9 1.3 5.4 0 9.8-4.4 9.8-9.8S17.4 2.2 12 2.2zm0 17.8c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.3 1 1-3.2-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
-        Habla por WhatsApp con Gonzalo
+        Explorar alianza estratégica
       </a>
 
       <footer>
